@@ -1,0 +1,91 @@
+.header, .footer {
+    background-color: #101010;
+}
+
+.header-container, .footer-container {
+    padding: 10px 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    width: 12%;
+    cursor: pointer;
+}
+
+.header__list, .footer__list {
+    font-size: 14pt;
+    display: flex;
+    color: white;
+}
+
+.header__item, .footer__item {
+    cursor: pointer;
+}
+
+.header__item:hover {
+    color: green;
+}
+
+.header__item:first-child {
+    padding-right: 20px;
+}
+
+.footer__list {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer__item {
+    display: flex;
+    gap: 5px;
+    color: white;
+}
+
+.separator {
+    font-size: 0.7em;
+    display: flex;
+    align-items: baseline;
+}
+
+.footer__text {
+    display: flex;
+    align-items: end;
+    font-size: 14pt;
+}
+
+.github-link {
+    width: 4em;
+    display: flex;
+    align-items: center;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(208deg) brightness(106%) contrast(103%);
+}
+
+.rsschool-link {
+    height: 1em;
+    display: flex;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(208deg) brightness(106%) contrast(103%);
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    animation-name: disappear;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes disappear{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        display: none;
+        opacity: 0;
+    }
+}

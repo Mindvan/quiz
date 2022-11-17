@@ -1,0 +1,309 @@
+.main {
+    color: white;
+    font-size: 14pt;
+    margin: 0 auto;
+    width: 100%;
+    gap: 5px;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'a a'
+    'b b'
+    'c d'
+    'h h';
+}
+
+.levels {
+    margin-bottom: 10px;
+    grid-area: a;
+}
+
+.levels__list {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    flex-wrap: wrap;
+}
+
+.levels__item {
+    padding: 0.5em 2em;
+    flex: auto;
+    text-align: center;
+    border-bottom: 2px solid white;
+    cursor: pointer;
+}
+
+.question {
+    grid-area: b;
+    border-bottom: 1px solid white;
+}
+
+.question-container {
+    display: flex;
+    padding: 15px;
+    column-gap: 20px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.bird__image {
+    width: 8rem;
+}
+
+.bird__title {
+    font-size: 21pt;
+    font-weight: 600;
+}
+
+.latin {
+    font-size: 14pt;
+    font-weight: 400;
+}
+
+.answers {
+    grid-area: c;
+    /*border-right: 1px solid white;*/
+}
+
+.answers:after {
+    content: "";
+    border-left: #CCC 1px solid;
+    position: absolute;
+    top: 45%;
+    height: 12rem;
+    bottom: 10px;
+    left: 49.7%;
+}
+
+.answers-container {
+    padding: 15px;
+    height: 100%;
+}
+
+.answers-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.5em;
+    height: inherit;
+}
+
+.answers-item {
+    width: 100%;
+    box-shadow: inset 0 0 0 2px #7e75ed;
+    border-radius: 3rem;
+    text-align: center;
+    padding: 7px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.answers-item:hover {
+    background: -webkit-linear-gradient(90deg, rgba(221,0,255,1) 0%, rgba(0,212,255,1) 100%);
+    background: -moz-linear-gradient(90deg, rgba(221,0,255,1) 0%, rgba(0,212,255,1) 100%);
+    background: -o-linear-gradient(90deg, rgba(221,0,255,1) 0%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(221,0,255,1) 0%, rgba(0,212,255,1) 100%);
+    -webkit-transition: background 1s ease-out;
+    -moz-transition: background 1s ease-out;
+    -o-transition: background 1s ease-out;
+    transition: background 1s ease-out;
+}
+
+.comment {
+    grid-area: d;
+    display: none;
+}
+
+.comment-container {
+    padding: 15px;
+    height: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas:
+    'e f'
+    'g g'
+}
+
+.bird__image_comment {
+    height: 5.3rem;
+    width: 8rem;
+    object-fit: cover;
+    grid-area: e;
+    margin: auto;
+}
+
+.bird-info {
+    flex: auto;
+    grid-area: f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bird-description {
+    grid-area: g;
+}
+
+.bird-description > p {
+    height: 8em;
+    /*overflow-y: scroll;*/
+}
+
+.next {
+    grid-area: h;
+    cursor: pointer;
+    padding: 10px 0;
+    background: transparent;
+    color: white;
+    box-shadow: inset 0 0 0 2px white;
+    border-radius: 3rem;
+}
+
+.next:hover {
+    background: white;
+    color: black;
+}
+
+.bird__audio {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.bird__audio-duration {
+    width: 100%;
+    height: 4px;
+    background: white;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+}
+
+.bird__audio-duration::-webkit-slider-thumb {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: white;
+}
+
+#bird__audio-volume {
+    height: 4px;
+    background: white;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+}
+
+#bird__audio-volume::-webkit-slider-thumb {
+     width: 1em;
+     height: 1em;
+     border-radius: 50%;
+     -webkit-appearance: none;
+     cursor: pointer;
+     background: white;
+}
+
+.bird__duration {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: auto;
+}
+
+.bird__duration-range {
+    flex: auto;
+}
+
+.bird__button {
+    -webkit-transition: .2s;
+    transition: .2s;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #3cafe4;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.bird__duration-time-count {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bird__duration-time-count > * {
+    font-size: 14pt;
+}
+
+/*.bird__duration-button svg {*/
+/*    transition: .2s;*/
+/*    width: 1rem;*/
+/*    height: 1rem;*/
+/*    position: absolute;*/
+/*    color: #54b1c1;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+.bird_duration-icon {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    color: #54b1c1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bird_duration_icon-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-200 0 1200 1000'%3E%3Cpath fill='%233cafe4' d='M96.51 11.97c-31.23 8.05-53.26 32.76-63.42 71.27-3.45 12.84-3.64 29.7-3.64 416.71s.19 403.87 3.64 416.71c16.09 60.74 61.69 86.03 120.9 67.25 9-2.87 53.65-25.1 116.49-58.24 56.14-29.51 221.29-116.3 367.28-192.93 145.99-76.64 271.29-143.31 278.38-148.1 39.28-25.68 59.59-63.04 53.26-97.52-4.79-26.63-24.33-53.07-52.88-71.65C892 399.37 172.58 22.32 154.95 16.38c-18.97-6.33-43.3-8.24-58.44-4.41z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.bird_duration_icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='bird__duration-button_pause' viewBox='0 0 45 47.607'%3E%3Cpath fill='%233cafe4' d='M17.991 40.976a6.631 6.631 0 01-13.262 0V6.631a6.631 6.631 0 0113.262 0v34.345zM42.877 40.976a6.631 6.631 0 01-13.262 0V6.631a6.631 6.631 0 0113.262 0v34.345z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.bird__duration-button_play {
+    display: block;
+}
+
+.bird__duration-button_pause {
+    display: none;
+}
+
+.bird__volume {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.dark {
+    /*border: 1.5px solid #7e75ed;*/
+    /*border-radius: 1rem;*/
+    background: rgba(24, 24, 24, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,0.57);
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.57);
+}
+
+.separator {
+    width: 0.1rem;
+    height: 2rem;
+    margin-left: 1%;
+    background-color: white;
+}

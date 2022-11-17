@@ -1,0 +1,70 @@
+*, *::after, *::before{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    transition: 0.3s all ease;
+}
+
+@font-face {
+    font-family: 'AkkuratLL';
+    src: url('../../../songbird/assets/fonts/SFUIDisplay-Light.woff') format('woff');
+    font-display: swap;
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AkkuratLL';
+    src: url('../../../songbird/assets/fonts/SFUIDisplay-Regular.woff') format('woff');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AkkuratLL';
+    src: url('../../../songbird/assets/fonts/SFUIDisplay-Bold.woff') format('woff');
+    font-display: swap;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AkkuratLL';
+    src: url('../../../songbird/assets/fonts/SFUIDisplay-Black.woff') format('woff');
+    font-display: swap;
+    font-weight: 900;
+    font-style: normal;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'SFUIDisplay', sans-serif;
+    background-image: url('../../../songbird/assets/img/bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #143a26;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    animation: shrink 5s infinite alternate;
+}
+
+@keyframes shrink {
+    0% {
+        background-size: 110% 110%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

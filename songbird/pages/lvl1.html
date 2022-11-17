@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 1</title>
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link rel="stylesheet" href="/assets/css/game.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/header-footer.css"/>
+
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <img src="../assets/icons/song-bird-logo-1.svg" alt="mindvan logo" class="header__logo">
+        <ul class="header__list">
+            <li class="header__item" id="header-score__text">Score:</li>
+            <li class="header__item" id="header-score__counter">0</li>
+        </ul>
+    </div>
+</header>
+<main class="main dark">
+    <section class="levels">
+        <ul class="levels__list">
+            <li class="levels__item">Level 1</li>
+            <li class="levels__item">Level 2</li>
+            <li class="levels__item">Level 3</li>
+            <li class="levels__item">Level 4</li>
+            <li class="levels__item">Level 5</li>
+        </ul>
+    </section>
+
+    <section class="question">
+        <div class="question-container">
+            <img src="../assets/img/49298804222_474cfe8682.jpg" alt="bird" class="bird__image">
+            <div class="bird-info">
+                <div class="bird__title">Title</div>
+                <div class="bird__audio">
+                    <div class="bird__duration">
+                        <button class="bird__button" id="button-1">
+                            <div class="bird_duration-icon bird_duration_icon-play"></div>
+                        </button>
+                        <div class="bird__duration-range">
+                            <input type="range" class="bird__audio-duration" min="0" max="100" value="0">
+                            <div class="bird__duration-time-count">
+                                <div class="bird__duration-time-count_current">00:00</div>
+                                <div class="bird__duration-time-count_end">
+                                    01:23
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="separator"></span>
+                    <div class="bird__volume">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="volume-off" viewBox="0 0 16 16">
+                            <path d="M10.717 3.55A.5.5 0 0 1 11 4v8a.5.5 0 0 1-.812.39L7.825 10.5H5.5A.5.5 0 0 1 5 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                        </svg>
+                        <input type="range" id="bird__audio-volume" min="0" max="100" value="75" onchange="volume_change()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="volume-up" viewBox="0 0 16 16">
+                            <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                            <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                        </svg>
+                        <div class="bird__duration-volume-count">
+                            75
+                        </div>
+                    </div>
+                </div>
+
+                </input>
+            </div>
+        </div>
+    </section>
+
+    <section class="answers">
+        <div class="answers-container">
+            <ul class="answers-list">
+                <li class="answers-item"></li>
+                <li class="answers-item"></li>
+                <li class="answers-item"></li>
+                <li class="answers-item"></li>
+                <li class="answers-item"></li>
+                <li class="answers-item"></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="comment">
+<!--        <div class="comment-container">-->
+<!--            <img src="../assets/img/49298804222_474cfe8682.jpg" alt="bird" class="bird__image bird__image_comment">-->
+<!--            <div class="bird-info">-->
+<!--                <div class="bird__title">-->
+<!--                    <div class="russian"></div>-->
+<!--                    <div class="latin"></div>-->
+<!--                </div>-->
+<!--                <div class="bird__audio">-->
+<!--                    <div class="bird__duration">-->
+<!--                        <button class="bird__button">-->
+<!--                            <div class="bird_duration-icon bird_duration_icon-play"></div>-->
+<!--                        </button>-->
+<!--                        <div class="bird__duration-range">-->
+<!--                            <input type="range" class="bird__audio-duration" min="0" max="100" value="0">-->
+<!--                            <div class="bird__duration-time-count">-->
+<!--                                <div class="bird__duration-time-count_current">-->
+<!--                                    00:00-->
+<!--                                </div>-->
+<!--                                <div class="bird__duration-time-count_end">-->
+<!--                                    01:23-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="bird-description">-->
+<!--                <p>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+    </section>
+
+    <button class="next">
+        Next level
+    </button>
+</main>
+<script src="../assets/js/game.js"></script>
+</body>
+</html>
