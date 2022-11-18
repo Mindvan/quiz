@@ -72,6 +72,9 @@ audio.load();
 
 const durationCurrent = document.querySelector('.bird__duration-time-count_current');
 var player;
+var points = 5;
+var total = 0;
+var lvl = 1;
 
 function setSeek(value) {
     //console.log('seek');
@@ -211,7 +214,7 @@ if (durationButtons.length === 1) {
         range.firstElementChild.max = Math.round(audio.duration);
         //console.log(range.firstElementChild.max);
         durationEnd.innerHTML = secondsToMinutes(range.firstElementChild.max);
-        // await shit(durationButtons);
+        await play(durationButtons);
     };
 }
 
@@ -226,14 +229,44 @@ async function targetCard(event) {
                 document.querySelector('.comment').style.display = 'block';
                 document.querySelector('.comment').innerHTML = await generateNewModal(currentCard);
                 durationButtons = document.querySelectorAll('.bird__button');
+
+                if (!isAnswered) {
+                    checkAnswer(card)
+                } else {
+                    document.querySelector('.next').style.pointerEvents = 'auto';
+                }
+
                 play(durationButtons);
             }
         })
     }
 }
 
-function play(durationButtons) {
+var isAnswered = false;
+let audioYes = new Audio('../assets/sfx/correct.mp3');
+let audioNo = new Audio('../assets/sfx/wrong.mp3');
+function checkAnswer(card) {
+    if (data[0].name === card.textContent.toString()) {
+        card.style.boxShadow = 'inset 0 0 0 2px #60ff00';
+        console.log('correct');
+        title.innerHTML = data[0].name;
+        isAnswered = true;
+        total = points;
+        document.querySelector('#header-score__counter').innerHTML = `${total}`;
+        audioYes.play();
+    } else {
+        if (!isAnswered && !card.classList.contains('wrong'))
+        {
+            card.classList.add('wrong');
+            points--;
+            console.log(points);
+            audioNo.play();
+        }
+        console.log('wrong')
+    }
+}
 
+function play(durationButtons) {
     // вешаем события на оба range'а
     durationButtons.forEach(x => x.addEventListener('click', function(event) {
 
@@ -260,7 +293,7 @@ function play(durationButtons) {
             target.lastElementChild.classList.remove('bird_duration_icon-play')
             target.lastElementChild.classList.add('bird_duration_icon-pause')
             player.play();
-        } else {;
+        } else {
             target.lastElementChild.classList.remove('bird_duration_icon-pause')
             target.lastElementChild.classList.add('bird_duration_icon-play')
             clearInterval(timer);
