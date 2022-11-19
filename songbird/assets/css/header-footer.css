@@ -21,16 +21,16 @@
     color: white;
 }
 
+.header__list {
+    column-gap: 30px;
+}
+
 .header__item, .footer__item {
     cursor: pointer;
 }
 
 .header__item:hover {
     color: green;
-}
-
-.header__item:first-child {
-    padding-right: 20px;
 }
 
 .footer__list {
