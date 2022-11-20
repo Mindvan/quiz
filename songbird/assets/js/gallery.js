@@ -1,11 +1,14 @@
-import birdsData from './data.js';
+import birdsData from './datafull.js';
 //import {loadAudio, generateAudio, generateNewModal} from './game.js';
 
 const data = Object.values(birdsData[0])
-
 const slider = document.getElementById('slider');
 const welcome = document.querySelector('.welcome');
 const welcomeContainer = document.querySelector('.welcome-container');
+const arrows = document.querySelector('.arrows');
+const main = document.querySelector('.main');
+
+const mediaTablet = window.matchMedia('(max-width: 800px)')
 
 function generateNewModal(card) {
 
@@ -39,11 +42,25 @@ function generateNewModal(card) {
 function createCards() {
     welcome.style.flexDirection = 'column';
     welcome.style.overflow = 'hidden';
+    welcome.style.justifyContent = 'start';
     welcomeContainer.style.justifyContent = 'start';
     welcomeContainer.style.height = '285px';
-    welcomeContainer.style.width = '600px';
+
+    if (mediaTablet.matches) {
+        welcomeContainer.style.width = '450px';
+    } else {
+        welcomeContainer.style.width = '600px';
+    }
     welcomeContainer.style.position = 'relative';
     welcomeContainer.style.top = '0px';
+    arrows.style.display = 'flex';
+    arrows.style.flexDirection = 'column';
+    arrows.style.justifyContent = 'space-between';
+    arrows.style.alignItems = 'center';
+    arrows.children[0].style.padding = '0.5em';
+    arrows.children[1].style.padding = '0.5em';
+    main.style.display = 'flex';
+    main.style.justifyContent = 'start';
     for (let dataItem of data) {
         welcomeContainer.innerHTML += generateNewModal(dataItem);
     }
@@ -61,12 +78,6 @@ const moveRight = () => {
         offset = 0;
     }
     welcomeContainer.style.top = -offset + 'px';
-    //welcomeContainer.classList.add("transition-right");
-
-    // leftArrow.removeEventListener("click", moveLeft);
-    // rightArrow.removeEventListener("click", moveRight);
-    // leftArrow.style.pointerEvents = 'none';
-    // rightArrow.style.pointerEvents = 'none';
 }
 
 const moveLeft = () => {
@@ -75,14 +86,11 @@ const moveLeft = () => {
         offset = 285 * (data.length - 1);
     }
     welcomeContainer.style.top = -offset + 'px';
-    //welcomeContainer.classList.add("transition-left");
-    // leftArrow.removeEventListener("click", moveLeft);
-    // rightArrow.removeEventListener("click", moveRight);
-    // leftArrow.style.pointerEvents = 'none';
-    // rightArrow.style.pointerEvents = 'none';
 }
 
+leftArrow.removeEventListener("click", moveLeft);
 leftArrow.addEventListener("click", moveLeft);
+rightArrow.removeEventListener("click", moveRight);
 rightArrow.addEventListener("click", moveRight);
 
 
@@ -95,5 +103,6 @@ function showGallery() {
 }
 
 const links = document.querySelectorAll("[href='#gallery']");
+links.forEach(x => x.removeEventListener('click', showGallery))
 links.forEach(x => x.addEventListener('click', showGallery))
 

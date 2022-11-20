@@ -24,7 +24,7 @@ main {
 .slider {
     width: 75%;
     max-width: 600px;
-    height: 50%;
+    height: 300px;
 }
 
 .welcome-container {
@@ -93,6 +93,11 @@ main {
     cursor: pointer;
     position:relative;
     z-index:3;
+}
+
+.arrows_left:hover, .arrows_right:hover {
+    background-color: black;
+    color: white;
 }
 
 .gallery-bird-block {
