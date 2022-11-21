@@ -3,3 +3,11 @@
         width: 425px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .bird-description {
+        overflow-y: auto;
+        width: 215px;
+        margin: 0 auto;
+    }
+}
