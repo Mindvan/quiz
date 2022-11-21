@@ -26,7 +26,7 @@ function secondsToMinutes(time) {
 
 async function generateAudio(audioFile) {
     const duration = await loadAudio(audioFile);
-    // //console.log(duration);
+    // ////console.log(duration);
 
     return new Promise(function(resolve, reject) {
         resolve(`<input type="range" class="bird__audio-duration" min="0" max="${Math.round(Number(duration))}" value="0">
@@ -43,9 +43,9 @@ async function generateAudio(audioFile) {
 var seekbar;
 var player;
 async function generateNewModal(card) {
-    // console.log(card);
+    // //console.log(card);
     const generatedAudio = await generateAudio(card.audio);
-    // console.log(generatedAudio);
+    // //console.log(generatedAudio);
     return `<div class="gallery-bird-block">
                 <div class="comment-container-gallery">
                 <img src="${card.image}" alt="bird" class="bird__image bird__image_comment">
@@ -116,63 +116,88 @@ function createCards() {
 
     setTimeout(function () {
         const durationButtons = document.querySelectorAll('.bird__button')
-        console.log(durationButtons);
+        //console.log(durationButtons);
+        //console.log('f');
         durationButtons.forEach(x => x.addEventListener('click', listener));
     }, 2000)
 }
 
 async function makeAudio(currentCard) {
-    const player = new Audio();
-    player.src = currentCard.audio;
-    return player;
+    //console.log('f');
+    const players = new Audio();
+    players.src = currentCard.audio;
+    //console.log('f');
+    return players;
 }
 
 var isAudioFinished = false;
 var isLoaded = false;
+var isFirstPlay = true;
 const listener = (event) => {
     // берем кнопку, на которую нажали
     const target = event.target.closest('.bird__button');
-    console.log(target);
-
+    //console.log(target);
+    // //console.log('f');
+    // //console.log(player.currentTime);
     const targetNext = target.nextElementSibling;
     seekbar = targetNext.firstElementChild;
-
+    //
+    // //console.log('f');
+    // //console.log(player.currentTime);
     const cardTitle = target.parentElement.parentElement.previousElementSibling.firstElementChild.textContent;
-    data.filter(async (currentCard) => {
-        if (currentCard.name === cardTitle) {
-            player = await makeAudio(currentCard)
-        }
-    })
+    console.log(isFirstPlay);
+    if (isFirstPlay) {
+        console.log('tt');
+        data.filter(async (currentCard) => {
+            if (currentCard.name === cardTitle) {
+                player = await makeAudio(currentCard)
+                console.log(player.src);
+                ////console.log(player.currentTime);
+                isFirstPlay = false;
+            }
+        })
+    }
     // таймер для ползунка
     let timer = setInterval(range_slider, 1000);
+    // //console.log('f');
+    // //console.log(player.currentTime);
     // в зависимости от кликнутого range работаем над нужным звуком
 
-    console.log(target.lastElementChild.classList);
+    //console.log(target.lastElementChild.classList);
 
     if (!isLoaded) {
         setTimeout(function () {
             if (target.lastElementChild.classList.contains('bird_duration_icon-play')) {
                 target.lastElementChild.classList.remove('bird_duration_icon-play')
                 target.lastElementChild.classList.add('bird_duration_icon-pause')
-                console.log(player);
+                //console.log(player);
+                //console.log(player.currentTime);
                 player.play();
+                //console.log('f');
+                //console.log(player.currentTime);
             }
             isLoaded = true;
         }, 100)
     } else {
-        console.log(isLoaded);
+        //console.log(isLoaded);
+        //console.log('f');
+        //console.log(player.currentTime);
         if (target.lastElementChild.classList.contains('bird_duration_icon-play')) {
             target.lastElementChild.classList.remove('bird_duration_icon-play')
             target.lastElementChild.classList.add('bird_duration_icon-pause')
-            console.log(player);
+            //console.log(player);
+            //console.log('f');
+            //console.log(player.currentTime);
             player.play();
         }
         else {
+            //console.log(player.currentTime);
             target.lastElementChild.classList.remove('bird_duration_icon-pause')
             target.lastElementChild.classList.add('bird_duration_icon-play')
             clearInterval(timer);
             player.pause();
-            console.log(player.currentTime)
+            //console.log(player.currentTime);
+            //console.log(player.currentTime)
         }
 
         // // когда аудио закончилось
@@ -182,28 +207,28 @@ const listener = (event) => {
         //     target.lastElementChild.classList.add('bird_duration_icon-play')
         // });
     }
-
+    //console.log(player.currentTime);
     const volumeRangeAnswer = document.querySelector('#bird__answer-volume');
     const volumeCountAnswer = document.querySelector('.bird__answer-volume-count');
     console.log(volumeRangeAnswer);
     console.log(volumeCountAnswer);
 
     volumeRangeAnswer.oninput = function(e) {
-        console.log('oninput')
-        console.log(e.target.value);
+        //console.log('oninput')
+        //console.log(e.target.value);
         player.volume = e.target.value / 100;
         volumeCountAnswer.innerHTML = volumeRangeAnswer.value;
         // oninput
     }
 
     volumeRangeAnswer.onchange = function(e) {
-        console.log('onchange')
-        console.log(e.target.value);
+        //console.log('onchange')
+        //console.log(e.target.value);
         player.volume = e.target.value / 100;
         volumeCountAnswer.innerHTML = volumeRangeAnswer.value;
         // onchange
     }
-
+    //console.log(player.currentTime);
     seekbar.oninput = function(e) {
         setSeek(e.target.value);
         // oninput
@@ -224,6 +249,8 @@ const moveRight = () => {
     if (offset > 405 * (data.length - 1)) {
         offset = 0;
     }
+    isFirstPlay = true;
+    player.src = '';
     welcomeContainer.style.top = -offset + 'px';
 }
 
@@ -232,6 +259,8 @@ const moveLeft = () => {
     if (offset < 0) {
         offset = 405 * (data.length - 1);
     }
+    isFirstPlay = true;
+    player.src = '';
     welcomeContainer.style.top = -offset + 'px';
 }
 
@@ -250,28 +279,36 @@ function showGallery() {
 }
 
 function setSeek(value) {
-    console.log(value);
+    //console.log(player.currentTime);
+    //console.log(value);
     player.currentTime = value;
     timeUpdate();
+    //console.log(player.currentTime);
 }
 
 function timeUpdate() {
+    //console.log(player.currentTime);
     const durationCurrent = seekbar.nextElementSibling.firstElementChild;
     durationCurrent.innerHTML = secondsToMinutes(Math.round(player.currentTime));
     seekbar.value = Math.round(player.currentTime);
-
+    //console.log(player.currentTime);
     if (Number(seekbar.value) === Math.round(player.duration)) {
         isAudioFinished = true;
     }
+    //console.log(player.currentTime);
 }
 
 function range_slider() {
     let position = 0;
+    //console.log(player.currentTime);
     if (!isNaN(player.duration)) {
-        console.log(player.currentTime);
+        //console.log(player.currentTime);
+        //console.log(player.currentTime);
         position = player.currentTime;
         seekbar.value = position;
+        //console.log(player.currentTime);
         timeUpdate();
+        //console.log(player.currentTime);
     }
 }
 
