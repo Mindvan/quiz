@@ -197,7 +197,7 @@
     background: white;
 }
 
-#bird__question-volume, #bird__answer-volume {
+#bird__question-volume, #bird__answer-volume, .bird__answer-volume {
     height: 4px;
     background: white;
     outline: none;
@@ -205,11 +205,11 @@
     -webkit-appearance: none;
 }
 
-#bird__answer-volume {
+#bird__answer-volume, .bird__answer-volume {
     width: 4rem;
 }
 
-#bird__question-volume::-webkit-slider-thumb, #bird__answer-volume::-webkit-slider-thumb {
+#bird__question-volume::-webkit-slider-thumb, #bird__answer-volume::-webkit-slider-thumb, .bird__answer-volume::-webkit-slider-thumb {
      width: 1em;
      height: 1em;
      border-radius: 50%;
